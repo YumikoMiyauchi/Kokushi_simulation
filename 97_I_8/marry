@@ -1,0 +1,29 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Sat Oct  7 19:50:19 2017
+
+@author: Yumiko
+"""
+
+def marry(mother, father, alpha):
+    """遺伝子を配合するし、親の形質を受けつぐ子供を産む"""
+   
+    from numpy import random
+    chil_array = []
+    for i in [0,1]:
+        #父、母の遺伝子をランダムで取ってくる
+        chil_array.append(random.choice([father[0][i], mother[0][i]]))
+        
+    if 1 in chil_array:
+        #病的遺伝子を持っている場合、浸透率の確率で発症させる
+        if random.random() < alpha:
+            x = 1
+        else:
+            x = 0
+        
+    else:
+        #病的遺伝子がなかれば発症しない
+        x = 0
+        
+    return([chil_array, x])
+        
